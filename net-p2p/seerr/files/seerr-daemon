@@ -1,0 +1,30 @@
+#! /bin/sh
+
+# PROVIDE: seerr
+# REQUIRE: DAEMON
+# KEYWORD: shutdown
+
+#
+# Add the following lines to /etc/rc.conf to enable git_daemon:
+#
+#seerr_enable="YES"
+
+. /etc/rc.subr
+
+name="seerr"
+rcvar="seerr_enable"
+
+load_rc_config $name
+
+: ${seerr_user:=www}
+: ${seerr_group:=www}
+: ${seerr_enable:=NO}
+: ${seerr_directory:=/usr/local/share/seerr}
+#: ${seerr_flags:=--syslog --reuseaddr --detach}
+
+command="/usr/local/libexec/seerr"
+#command_args="${seerr_directory}"
+
+PATH="${PATH}:/usr/local/libexec/"
+
+run_rc_command "$1"

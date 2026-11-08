@@ -1,0 +1,4 @@
+@owner root
+@group wheel
+%%LOCALBASE%%/libexec/seerr
+%%LOCALBASE%%/etc/rc.d/seerr
