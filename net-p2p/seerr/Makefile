@@ -15,6 +15,7 @@ BUILD_DEPENDS= npm-node22>0:www/npm-node22 \
 	libuv>0:devel/libuv \
 	sqlite3>0:databases/sqlite3 \
 	python3>0:lang/python3 \
+	py312-setuptools>0:devel/py-setuptools \
 	gmake>0:devel/gmake
 
 
