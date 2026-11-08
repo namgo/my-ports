@@ -69,7 +69,7 @@ MAKE_ENV= CI=1  \
 	  CPPFLAGS=-I${LOCALBASE}/include \
 	  SHARP_FORCE_GLOBAL_LIBVIPS=1 
 
-PORTDATA= *
+PORTDATA= node_modules .next dist seerr-api.yml package.json
 
 pre-build: 
 	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} corepack enable 
