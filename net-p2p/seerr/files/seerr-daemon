@@ -14,23 +14,32 @@
 name="seerr"
 rcvar="seerr_enable"
 
+pidfile="/var/run/${name}.pid"
+logfile="/var/log/${name}.log"
 load_rc_config $name
 
-: ${seerr_user:=www}
-: ${seerr_group:=www}
+#: ${seerr_user:=seerr}
+#: ${seerr_group:=seerr}
 : ${seerr_enable:=NO}
 : ${seerr_directory:=/usr/local/share/seerr}
-#: ${seerr_flags:=--syslog --reuseaddr --detach}
+#: ${seerr_directory:=/var/db/seerr}
+#: ${seerr_program:=/usr/local/bin/node}
+#: ${seerr_flags:=/usr/local/share/seerr/dist/index.js}
 
-command="/usr/local/libexec/seerr"
-#command_args="${seerr_directory}"
+seerr_chdir=${seerr_directory}
 
-PATH="${PATH}:/usr/local/libexec/"
+command="/usr/sbin/daemon"
+command_args="-f -r -P ${pidfile} -o ${logfile} -u seerr /usr/local/bin/node /usr/local/share/seerr/dist/index.js"
+
+PATH="${PATH}:/usr/bin:/bin:/usr/local/bin"
+
+export HOME=/usr/local/share/seerr
+export NODE_ENV=production
+export CONFIG_DIRECTORY=/var/db/seerr/
 
 seerr_prestart()
 {
 	install -d -o ${seerr_user} -g ${seerr_group} -m 0750 /var/db/seerr
 }
-
 
 run_rc_command "$1"

@@ -1,5 +1,6 @@
 @owner root
 @group wheel
-%%LOCALBASE%%/libexec/seerr
 %%LOCALBASE%%/etc/rc.d/seerr
-@dir(www,www,0750) /var/db/seerr
+@owner seerr
+@group seerr
+@dir(seerr,seerr,0750) /var/db/seerr
