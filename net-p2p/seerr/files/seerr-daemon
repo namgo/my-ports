@@ -27,4 +27,10 @@ command="/usr/local/libexec/seerr"
 
 PATH="${PATH}:/usr/local/libexec/"
 
+seerr_prestart()
+{
+	install -d -o ${seerr_user} -g ${seerr_group} -m 0750 /var/db/seerr
+}
+
+
 run_rc_command "$1"

@@ -93,7 +93,6 @@ do-install:
 		${STAGEDIR}${DATADIR} \
 		${STAGEDIR}${LOCALBASE}/libexec \
 		${STAGEDIR}${LOCALBASE}/etc/rc.d
-	#cd ${WRKSRC} && ${PAX} -rw . ${STAGEDIR}${WWWDIR}/
 	cd ${WRKSRC} && ${COPYTREE_SHARE} "dist .next seerr-api.yml node_modules package.json" ${STAGEDIR}${DATADIR}
 	${INSTALL_SCRIPT} ${FILESDIR}/seerr-bin ${STAGEDIR}${LOCALBASE}/libexec/seerr
 	${INSTALL_SCRIPT} ${FILESDIR}/seerr-daemon ${STAGEDIR}${LOCALBASE}/etc/rc.d/seerr

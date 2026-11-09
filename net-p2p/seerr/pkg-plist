@@ -2,3 +2,4 @@
 @group wheel
 %%LOCALBASE%%/libexec/seerr
 %%LOCALBASE%%/etc/rc.d/seerr
+@dir(www,www,0750) /var/db/seerr
